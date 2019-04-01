@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-sm-4">
+        <form action="" class="form form-inline">
+            <div class="form-group">
+                <input type="text" placeholder="Search Products" class="input-lg form-control"
+                 #searchQuery>
+                <button class="btn btn-primary btn-lg" (click)="searchProducts(searchQuery.value)">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-sm-6" *ngFor=" let product of products">
+                <div class="panel panel-primary text-center">
+                    <div class="panel-body">
+                        <img [src]="product.prodImg" style="max-height:200px; width:auto;" />
+                        <p>
+                            <span class="badge bage-primary">{{ product.prodId }}</span> |
+                            <span>{{ product.prodPrice }}</span>
+                        </p>
+                    </div>
+                    <div class="panel-footer">
+                        <strong>{{ product.prodName }}</strong>
+                        - {{ product.prodDesc }}
+                        <br>
+                        <button class="btn btn-primary" (click)="showDetails(product)">View</button>&nbsp;
+                        <app-addtocart [selectedProduct]=product></app-addtocart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>        
+    <div class="col-sm-4">        
+        <aside>
+            <h3 class="text-center">Cart Details</h3>
+            <app-cartdetails></app-cartdetails>            
+        </aside>
+    </div>
+</div>
+<!-- Modal -->
