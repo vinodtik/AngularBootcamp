@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,12 @@ import { CartDetailsComponent } from './cartdetails.component';
 import { CounterComponent } from './counter.component';
 import { CounterparentComponent } from './counterparent.component';
 import { PageNotFoundComponent } from './pagenotfound.component';
+import { ProductDetailsComponent } from './productdetails.component';
+import { ViewChildComponent } from './viewchild/viewchild.component';
+import { SignupFormComponent } from './signupform/singup.component';
+import { ReactiveComponent } from './signupform/reactive.component';
+import { ChildDetComponent } from './changedetection/childdet.component';
+import { ParentDetComponent } from './changedetection/Parentdet.component';
 
 var routes = [
   {
@@ -31,11 +37,31 @@ var routes = [
   },
   {
     path : 'products',
-    component : ProductComponent
+    component : ProductComponent,
+
+    children : [
+      {
+        path  : 'productdetails/:id',
+        component : ProductDetailsComponent
+      }
+    ]
   },
   {
     path : 'about us',
     component : CounterparentComponent
+  },
+  {
+    path: 'view child',
+    component : ViewChildComponent
+  },
+  {
+    path: 'sign up',
+    // component : SignupFormComponent
+    component : ReactiveComponent
+  },
+  {
+    path: 'change detection',
+    component : ParentDetComponent
   },
   {
     path : '**',
@@ -56,13 +82,22 @@ var routes = [
     CartDetailsComponent,
     CounterComponent,
     CounterparentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProductDetailsComponent,
+    ViewChildComponent,
+    SignupFormComponent,
+    ReactiveComponent,
+    
+    // change detection
+    ChildDetComponent,
+    ParentDetComponent
   ],
   imports: [
     BrowserModule,
     PaymentsModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

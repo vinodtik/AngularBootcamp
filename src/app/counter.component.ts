@@ -24,7 +24,6 @@ export class CounterComponent implements OnInit {
     increment(){
         this.counter++
         this.update.emit(this.counter);
-        // console.log(this.counter);
     }
 
 }

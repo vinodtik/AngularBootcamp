@@ -15,11 +15,6 @@ export class AddtocartComponent implements OnInit {
     
   }
   addtoCart(){  
-      // alert( 
-      //   this.selectedProduct.prodName + 
-      //   " added to cart for " + 
-      //   this.selectedProduct.prodPrice 
-      // );
     this.cartservice.addProductToCart(this.selectedProduct);
   }
 

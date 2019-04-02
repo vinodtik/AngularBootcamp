@@ -8,7 +8,12 @@ export class CartService {
     constructor() { }
 
     addProductToCart(product:Product){
-        this.cartProducts.push(product);
+        if(this.cartProducts.includes(product)){
+            alert('containes');
+        }
+        else{
+            this.cartProducts.push(product);
+        }
     }
 
     getCartDetails():Product[]{
@@ -17,7 +22,6 @@ export class CartService {
 
     removeProduct(i){
         this.cartProducts.splice(i,1);
-        this.cartProducts.toString();
     }
 
 }

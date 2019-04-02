@@ -6,9 +6,9 @@ import { CartService } from './services/cart.service';
     selector: 'app-cartdetails',
     template: `
         <ul class="list-group" style="max-height:300px; overflow:auto">
-            <li class="list-group-item" *ngFor=" let item of cartProducts; let i = index">
+            <li class="list-group-item list-group-item-light" *ngFor=" let item of cartProducts; let i = index">
                 <img [src]="item.prodImg" class="img-rounded" style="height:60px; width:auto;" />
-                {{ item.prodName }} x 1 = {{ item.prodPrice }} <span class="btn btn-danger fa fa-trash" title="Remove" (click)="removeProduct(i)"></span>
+                {{ item.prodName }} x <span>1</span> = {{ item.prodPrice }}  <span class="btn btn-danger fa fa-trash" title="Remove" (click)="removeProduct(i)"></span>
             </li>
         </ul>
     `

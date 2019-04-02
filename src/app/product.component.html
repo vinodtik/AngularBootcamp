@@ -1,4 +1,9 @@
 <div class="row">
+    <div class="col-sm-12">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <form action="" class="form form-inline">
             <div class="form-group">
@@ -25,7 +30,8 @@
                         <strong>{{ product.prodName }}</strong>
                         - {{ product.prodDesc }}
                         <br>
-                        <button class="btn btn-primary" (click)="showDetails(product)">View</button>&nbsp;
+                        <!-- <button class="btn btn-primary" (click)="showDetails(product)">View</button>&nbsp; -->
+                        <a  class="btn btn-primary" routerLink="productdetails/{{ product.prodId }}">View</a>&nbsp;
                         <app-addtocart [selectedProduct]=product></app-addtocart>
                     </div>
                 </div>
