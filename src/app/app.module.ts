@@ -8,7 +8,7 @@ import { GreetComponent } from './greet/greet.component';
 import { helloworldComponent } from './helloworldComponent.component';
 import { MenuComponent } from './menu.component';
 import { ProductComponent } from './product.component';
-import { PaymentsModule } from './payments/payment.module';
+// import { PaymentsModule } from './payments/payment.module';
 import { LoginComponent } from './login/login.component';
 import { AddtocartComponent } from './addtocart/addtocart.component';
 import { CartDetailsComponent } from './cartdetails.component';
@@ -21,6 +21,11 @@ import { SignupFormComponent } from './signupform/singup.component';
 import { ReactiveComponent } from './signupform/reactive.component';
 import { ChildDetComponent } from './changedetection/childdet.component';
 import { ParentDetComponent } from './changedetection/Parentdet.component';
+import { TrackComponent } from './trackdatachanges/track.component';
+import { HttpClientModule } from '@angular/common/http'
+import { PhotosComponent } from './photos/photos.component';
+import { PipesComponent } from './pipesdemo/pipe.component';
+import { ReverseStringPipe } from './pipesdemo/custom.pipes';
 
 var routes = [
   {
@@ -64,6 +69,22 @@ var routes = [
     component : ParentDetComponent
   },
   {
+    path:'payments',
+    loadChildren:'./payments/payment.module#PaymentsModule'//adding path to payment module
+  },
+  {
+    path: 'track changes',
+    component : TrackComponent
+  },
+  {
+    path: 'photos',
+    component : PhotosComponent
+  },
+  {
+    path: 'pipes',
+    component : PipesComponent
+  },
+  {
     path : '**',
     component : PageNotFoundComponent
   }
@@ -90,14 +111,21 @@ var routes = [
     
     // change detection
     ChildDetComponent,
-    ParentDetComponent
+    ParentDetComponent,
+    TrackComponent,
+
+    PhotosComponent,
+
+    PipesComponent,
+    ReverseStringPipe
   ],
   imports: [
     BrowserModule,
-    PaymentsModule,
+    // PaymentsModule,//included as lazy loading on requests
     FormsModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

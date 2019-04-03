@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { PaymentsComponent } from './payments.component';
+import { RouterModule } from '@angular/router';
+
+var routes = [
+    {
+        path : '',
+        component : PaymentsComponent
+    }
+]
 
 @NgModule({
-    imports: [ BrowserModule ],
+    imports: [ 
+        RouterModule.forChild(routes)
+    ],
     declarations: [ 
         PaymentsComponent
     ],
